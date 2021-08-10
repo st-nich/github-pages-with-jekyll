@@ -3,6 +3,7 @@ author: St. Nich 🏝
 description: > # this means to ignore newlines until "baseurl:"
   Delivering gifts of data. 
 theme: minima
+baseurl: "/github-pages-with-jekyll"
 markdown: kramdown
 kramdown:
   input: GFM
