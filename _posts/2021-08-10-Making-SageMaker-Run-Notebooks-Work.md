@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scheduling AWS SageMaker Notebooks 📔⏰"
+title: "Scheduling SageMaker Notebooks 📔⏰"
 subtitle: "It's all about the IAMs"
 date: 2021-08-10
 ---
