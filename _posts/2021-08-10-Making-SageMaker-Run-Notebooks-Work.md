@@ -66,18 +66,18 @@ To fix this you need to give the SageMaker-ExecutionRole rights to perform the n
 1. Navigate to IAM in the AWS search bar.
 2. Click Roles on the left menu and find the SageMaker-Execution role mentioned in the error.
 3. Click Attach Policies and add the necessary policies to the SageMaker-Execution role.
-  * Either add an AWS managed policy or create your own.
-  * In my case, adding the `AWSCloudFormationFullAccess` managed policy allowed the CloudFormation process to complete. The Quick Start guide mentions this, but I didn't realize the SageMaker-ExecutionRole needed to be granted the rights.
+  - Either add an AWS managed policy or create your own.
+  - In my case, adding the `AWSCloudFormationFullAccess` managed policy allowed the CloudFormation process to complete. The Quick Start guide mentions this, but I didn't realize the SageMaker-ExecutionRole needed to be granted the rights.
 4. Navigate back to CloudFormation and delete the `sagemaker-run-notebook` stack with the `ROLLBACK_COMPLETE` status.
 5. Jump back to the cloud shell and rerun the command which gave the `ROLLBACK_COMPLETE` error.
 6. Keep adding policies until the commands work without errors. 🔨 
-  * You should see a `sagemaker-run-notebook` with a green CREATE_COMPLETE status in the CloudFormation stacks menu and a `RunNotebook` function in the Lambda functions menu.
+  - You should see a `sagemaker-run-notebook` with a green CREATE_COMPLETE status in the CloudFormation stacks menu and a `RunNotebook` function in the Lambda functions menu.
 
 ## Setup the JupyterLab Extension
 1. Follow the [guide](https://github.com/aws-samples/sagemaker-run-notebook/blob/master/QuickStart.md#in-sagemaker-studio).
 2. [Optional] Add additional policies to access s3 buckets. The default SageMaker-Execution role cannot access all s3 buckets. Especially important if your notebook writes some output to a file.
 3. Add policies to schedule the notebooks.
-  * I found the SageMaker-ExecutionRole needed extra policies for EventsBridge and Lambda to schedule notebooks. I ended up creating a policy with full access over both of these:
+  - I found the SageMaker-ExecutionRole needed extra policies for EventsBridge and Lambda to schedule notebooks. I ended up creating a policy with full access over both of these:
   ```
   {
     "Version": "2012-10-17",
