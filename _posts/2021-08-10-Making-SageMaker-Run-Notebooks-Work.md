@@ -53,7 +53,7 @@ Hopefully this works for you, but it might not...
 
 In my case, I found most errors were due to *insufficient permissions* granted to the account executing the commands. Specifically, I received an error mentioning `ROLLBACK_COMPLETE` several times. This came from AWS CloudFormation and it means the stack creation failed in some way.
 
-If you get this error, navigate to CloudFormation, and click the stack called `sagemaker-run-notebook` with the status ROLLBACK_COMPLETE in red. Under events, you can see the events which failed. In my case the four role creations failed: `LambdaExecutionRole, BasicExecuteNotebookRole, ExecuteNotebookClientRole, ContainerBuildRole`.
+If you get this error, navigate to CloudFormation, and click the stack called `sagemaker-run-notebook` with the status ROLLBACK_COMPLETE in red. Under events, you can see the events that failed. In my case the four role creations failed: `LambdaExecutionRole, BasicExecuteNotebookRole, ExecuteNotebookClientRole, ContainerBuildRole`.
 
 The solution was to grant rights to create roles to the role that was executing the commands above. 🤷‍♂️ Yeah... confusing.
 
